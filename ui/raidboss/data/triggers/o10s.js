@@ -97,7 +97,7 @@
       id: 'O10N Horizontal Spin 1',
       regex: /15:\y{ObjectId}:Midgardsormr:31AC:/,
       infoText: {
-        en: 'Next Spin: In/Out',
+        en: 'Next Spin: In or Out',
       },
       tts : {
         en: 'in or out'
@@ -110,7 +110,7 @@
       id: 'O10N Vertical Spin 1',
       regex: /15:\y{ObjectId}:Midgardsormr:31AD:/,
       infoText: {
-        en: 'Next Spin: Cardinals/Corners',
+        en: 'Next Spin: Cardinals or Corners',
       },
       tts : {
         en: 'cardinals or corners'

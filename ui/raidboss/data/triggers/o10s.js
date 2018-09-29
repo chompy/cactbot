@@ -54,6 +54,9 @@
         if (data.me != matches[1])
           return 'Fire on ' + data.ShortName(matches[1]);
       },
+      tts: {
+        en: 'fire fire fire',
+      },
     },
     {
       id: 'O10S Death From Below',
@@ -96,6 +99,9 @@
       infoText: {
         en: 'Next Spin: In/Out',
       },
+      tts : {
+        en: 'in or out'
+      },
       run: function(data) {
         data.lastSpinWasHorizontal = true;
       },
@@ -105,6 +111,9 @@
       regex: /15:\y{ObjectId}:Midgardsormr:31AD:/,
       infoText: {
         en: 'Next Spin: Cardinals/Corners',
+      },
+      tts : {
+        en: 'cardinals or corners'
       },
       run: function(data) {
         data.lastSpinWasHorizontal = false;
@@ -126,6 +135,16 @@
           en: 'Go To Cardinals',
         };
       },
+      tts: function(data) {
+        if (data.lastSpinWasHorizontal) {
+          return {
+            en: 'out',
+          };
+        }
+        return {
+          en: 'cardinals',
+        };
+      },
     },
     {
       id: 'O10N Vertical Spin 2',
@@ -141,6 +160,16 @@
         }
         return {
           en: 'Go To Corners',
+        };
+      },
+      tts: function(data) {
+        if (data.lastSpinWasHorizontal) {
+          return {
+            en: 'in',
+          };
+        }
+        return {
+          en: 'corners',
         };
       },
     },

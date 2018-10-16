@@ -212,6 +212,9 @@
         en: 'Sides',
         de: 'Seiten',
       },
+      tts: {
+        en: 'sides'
+      }
     },
     {
       id: 'O12S Diffuse Wave Cannon Front/Back',
@@ -223,6 +226,9 @@
         en: 'Front or Back',
         de: 'Vorn oder Hinten',
       },
+      tts: {
+        en: 'front or back'
+      }
     },
     {
       id: 'O12S Oversampled Wave Cannon Right',

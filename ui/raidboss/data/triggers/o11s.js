@@ -59,6 +59,9 @@
       alertText: {
         en: 'Left',
       },
+      tts : {
+        en: 'left'
+      },
       run: function(data) {
         data.lastWasStarboard = true;
       },
@@ -71,6 +74,9 @@
       },
       alertText: {
         en: 'Right',
+      },
+      tts : {
+        en: 'right'
       },
       run: function(data) {
         data.lastWasStarboard = false;
@@ -92,6 +98,16 @@
           en: 'Stay (Left)',
         };
       },
+      tts: function(data) {
+        if (data.lastWasStarboard) {
+          return {
+            en: 'move',
+          };
+        }
+        return {
+          en: 'stay',
+        };
+      },
     },
     {
       id: 'O11S Larboard Cannon 2',
@@ -109,6 +125,16 @@
           en: 'Move (Right)',
         };
       },
+      tts: function(data) {
+        if (data.lastWasStarboard) {
+          return {
+            en: 'stay',
+          };
+        }
+        return {
+          en: 'move',
+        };
+      },
     },
     {
       id: 'O11S Starboard Surge 1',
@@ -116,12 +142,18 @@
       alertText: {
         en: 'Left (then opposite)',
       },
+      tts : {
+        en: 'left'
+      },
     },
     {
       id: 'O11S Larboard Surge 1',
       regex: / 14:3268:Omega starts using Larboard/,
       alertText: {
         en: 'Right (then opposite)',
+      },
+      tts : {
+        en: 'right'
       },
     },
     {
@@ -131,6 +163,9 @@
       alertText: {
         en: 'Opposite (Left)',
       },
+      tts : {
+        en: 'left'
+      },
     },
     {
       id: 'O11S Larboard Surge 2',
@@ -138,6 +173,9 @@
       delaySeconds: 4,
       alertText: {
         en: 'Opposite (Right)',
+      },
+      tts : {
+        en: 'right'
       },
     },
   ],

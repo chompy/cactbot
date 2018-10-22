@@ -366,6 +366,11 @@
         if (!(t > 0))
           return;
         if (t <= 8) {
+          if (data.role == 'healer') {
+            return {
+              en: 'Short Stack on ' + data.ShortName(matches[1]),
+            };
+          }
           return {
             en: 'Short Stack',
             de: 'Kurzer Stack',
@@ -374,6 +379,16 @@
         return {
           en: 'Long Stack',
           de: 'Langer Stack',
+        };
+      },
+      tts: function(data, matches) {
+        let t = parseFloat(matches[2]);
+        if (!(t > 0))
+          return;
+        if (t > 8)
+          return;
+        return {
+          en: data.ShortName(matches[1]) + " short stack",
         };
       },
     },

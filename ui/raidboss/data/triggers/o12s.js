@@ -400,18 +400,16 @@
       regexFr: / 1A:(\y{Name}) gains the effect of (?:Unknown_680|Bogue critique: partage) from (?:.*) for (.*) Seconds/,
       regexJa: / 1A:(\y{Name}) gains the effect of (?:Unknown_680|クリティカルバグ：シェア) from (?:.*) for (.*) Seconds/,
       condition: function(data, matches) {
-        return data.me == matches[1];
+        return data.me == matches[1] || data.role == 'healer';
       },
       alertText: function(data, matches) {
+        if (data.me != matches[1]) {
+          return;
+        }
         let t = parseFloat(matches[2]);
         if (!(t > 0))
           return;
         if (t <= 8) {
-          if (data.role == 'healer') {
-            return {
-              en: 'Short Stack on ' + data.ShortName(matches[1]),
-            };
-          }
           return {
             en: 'Short Stack',
             de: 'Kurzer Stack',
@@ -422,15 +420,32 @@
           de: 'Langer Stack',
         };
       },
+      // healer should know about short stack!
+      alarmText: function(data, matches) {
+        let t = parseFloat(matches[2]);
+        if (!(t > 0))
+          return;
+        if (t <= 8) {
+          if (data.role == 'healer') {
+            return {
+              en: data.ShortName(matches[1]) + " has Short Stack!",
+            };
+          }
+        }
+        return;
+      },
       tts: function(data, matches) {
         let t = parseFloat(matches[2]);
         if (!(t > 0))
           return;
-        if (t > 8)
-          return;
-        return {
-          en: data.ShortName(matches[1]) + " short stack",
-        };
+        if (t <= 8) {
+          if (data.role == 'healer') {
+            return {
+              en: data.ShortName(matches[1]) + " short stack",
+            };
+          }
+        }
+        return;
       },
     },
     {
